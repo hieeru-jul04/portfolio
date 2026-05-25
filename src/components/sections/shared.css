@@ -1,0 +1,120 @@
+/* Header */
+.animated-border {
+    position: relative;
+    background: #0C1423;
+    border: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        #4157E2,
+        #2ED8A3,
+        #F7F7F8,
+        #4157E2
+    );
+    background-size: 300%;
+    animation: borderAnimation 4s linear infinite;
+    z-index: -2;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #0C1423;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+@keyframes borderAnimation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 300%;
+    }
+}
+
+/* Section */
+.typing-animation {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #5B6FFF;
+    animation: typing 4s steps(15) infinite, blink 0.75s infinite;
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    40% {
+        width: 17ch;
+    }
+    80% {
+        width: 17ch;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #5B6FFF;
+    }
+}
+
+/* Hero Section - Floating badges */
+.floating-badge {
+    animation: floatY 3s ease-in-out infinite;
+}
+
+.floating-badge-delay {
+    animation: floatY 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hero rings */
+.hero-ring {
+    animation: rotateSlow 20s linear infinite;
+}
+
+.hero-ring-slow {
+    animation: rotateSlow 30s linear infinite reverse;
+}
+
+@keyframes rotateSlow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Pulse dots */
+.pulse-dot {
+    animation: pulseDot 2s ease-in-out infinite;
+}
+
+.pulse-dot-delay {
+    animation: pulseDot 2s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}

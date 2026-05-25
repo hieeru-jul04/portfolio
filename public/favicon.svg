@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Rounded square background with premium dark card styles -->
+  <rect width="100" height="100" rx="28" fill="#0C1423" stroke="#1F293A" stroke-width="6"/>
+  <!-- Decorative glow dot -->
+  <circle cx="80" cy="20" r="4" fill="#39D98A" />
+  <!-- Text logo NH. in Outfit / Inter styling -->
+  <text x="47" y="65" font-family="Outfit, Inter, system-ui, -apple-system, sans-serif" font-size="46" font-weight="900" text-anchor="middle" letter-spacing="-2">
+    <tspan fill="#FFFFFF">N</tspan>
+    <tspan fill="#5B6FFF">H</tspan>
+    <tspan fill="#39D98A">.</tspan>
+  </text>
+</svg>
