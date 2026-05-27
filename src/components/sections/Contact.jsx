@@ -31,8 +31,8 @@ const Contact = () => {
         <section id="contact" className="py-16">
             <h2 className="text-white text-2xl font-bold mb-8">Get In Touch</h2>
 
-            <div className="bg-[#0C1423] border border-[#1F293A] rounded-2xl p-8">
-                <div className="flex gap-12">
+            <div className="bg-[#0C1423] border border-[#1F293A] rounded-2xl p-6 md:p-8">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-12">
                     {/* Contact Info */}
                     <div className="flex flex-col gap-6 flex-shrink-0 justify-center">
                         {contactInfo.map((info) => (
@@ -50,11 +50,11 @@ const Contact = () => {
                     </div>
 
                     {/* Divider */}
-                    <div className="w-px bg-[#1F293A] flex-shrink-0" />
+                    <div className="w-full md:w-px h-px md:h-auto bg-[#1F293A] flex-shrink-0" />
 
                     {/* Form */}
                     <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-4">
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <input
                                 type="text"
                                 name="name"

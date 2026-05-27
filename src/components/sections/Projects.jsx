@@ -32,7 +32,7 @@ const Projects = () => {
             description: 'My personal portfolio website built with React and Tailwind CSS.',
             image: portfolioImg,
             tags: ['React', 'Tailwind CSS'],
-            liveDemo: 'https://portfolio-hieerujul04.vercel.app',
+            liveDemo: 'https://portfolio-ngoc-hieu-dev.vercel.app',
             github: 'https://github.com/hieeru-jul04/portfolio',
             color: '#39D98A',
         },
@@ -57,7 +57,7 @@ const Projects = () => {
                 </button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((project) => (
                     <div
                         key={project.id}

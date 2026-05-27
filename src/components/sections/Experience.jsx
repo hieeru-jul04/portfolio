@@ -48,11 +48,11 @@ const Experience = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {items.map((item, index) => (
-                        <div key={item.id} className="relative flex flex-col gap-4">
+                        <div key={item.id} className="relative flex flex-row md:flex-col gap-6 md:gap-4">
                             {/* Timeline dot */}
                             <div className="flex justify-start md:justify-center">
                                 <div
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center z-10 border-2 border-[#1F293A] timeline-icon"
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center z-10 border-2 border-[#1F293A] timeline-icon shrink-0"
                                     style={{ background: `${item.color}20`, borderColor: item.color }}
                                 >
                                     <item.icon size={20} color={item.color} />
@@ -60,7 +60,7 @@ const Experience = () => {
                             </div>
 
                             {/* Content */}
-                            <div className="flex flex-col gap-1.5 md:text-center">
+                            <div className="flex flex-col gap-1.5 md:text-center mt-1 md:mt-0">
                                 <span className="text-[#9CA3AF] text-xs">{item.period}</span>
                                 <h3 className="text-white font-semibold text-sm leading-snug">{item.title}</h3>
                                 <p className="text-[#6B7280] text-xs leading-relaxed">{item.subtitle}</p>
@@ -68,7 +68,7 @@ const Experience = () => {
 
                             {/* Connector line on mobile */}
                             {index < items.length - 1 && (
-                                <div className="md:hidden absolute left-6 top-12 bottom-0 w-0.5 bg-[#1F293A] -translate-x-0.5" />
+                                <div className="md:hidden absolute left-6 top-12 bottom-[-2rem] w-0.5 bg-[#1F293A] -translate-x-0.5" />
                             )}
                         </div>
                     ))}

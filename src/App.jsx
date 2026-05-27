@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='w-full min-h-screen bg-[#010814]'>
       <Header />
-      <div className='px-16'>
+      <div className='px-4 sm:px-8 md:px-16'>
         <Section />
         <About />
         <Skills />

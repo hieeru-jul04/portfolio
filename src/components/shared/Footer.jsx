@@ -17,9 +17,9 @@ const Footer = () => {
 
     return (
         <footer className="border-t border-[#1F293A] mt-4">
-            <div className="px-16 py-6 flex items-center justify-between">
+            <div className="px-4 sm:px-8 md:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
                 <Logo />
-                <p className="text-[#4B5563] text-sm">© 2026 Nguyen Ngoc Hieu. All rights reserved.</p>
+                <p className="text-[#4B5563] text-sm text-center md:text-left">© 2026 Nguyen Ngoc Hieu. All rights reserved.</p>
                 <div className="flex items-center gap-4">
                     {socials.map((social) => (
                         <a
