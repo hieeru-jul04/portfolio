@@ -33,7 +33,7 @@ const Header = () => {
             </nav>
                     
             <div className="hidden md:flex">
-                <a href="https://drive.google.com/file/d/11s2lTpxZOdlKagcqq-rNwv64hTMePB-4/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex justify-between border px-4 items-center w-40 h-10 rounded-md cursor-pointer animated-border">
+                <a href="https://drive.google.com/file/d/1Ei8mc1RfrZH-ezAYOSsZjMHMcPLdYZsb/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex justify-between border px-4 items-center w-40 h-10 rounded-md cursor-pointer animated-border">
                     Download CV <Download size={18} />
                 </a>
             </div>

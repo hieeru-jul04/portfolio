@@ -3,6 +3,7 @@ import { FaGithub } from 'react-icons/fa'
 import ecommerceImg from '../../assets/hero.png'
 import daidongImg from '../../assets/daidong.png'
 import portfolioImg from '../../assets/portfolio.png'
+import storeManagementImg from '../../assets/store-management.png'
 
 const Projects = () => {
     const projects = [
@@ -12,18 +13,18 @@ const Projects = () => {
             description: 'Fullstack e-commerce website with authentication, product management and Stripe.',
             image: daidongImg,
             tags: ['React', 'Node', 'MongoDB'],
-            liveDemo: '#',
+            liveDemo: 'https://daidong-furniture.vercel.app',
             github: 'https://github.com/hieeru-jul04/daidong-furniture',
             color: '#F59E0B',
         },
         {
             id: 2,
-            title: 'Task Management App',
-            description: 'Task management application with authentication and real-time updates.',
-            image: ecommerceImg,
-            tags: ['React', 'Spring Boot', 'WebSocket'],
+            title: 'Store Management System',
+            description: 'Store management system with authentication and real-time updates.',
+            image: storeManagementImg,
+            tags: ['React', 'Spring Boot', 'MySQL'],
             liveDemo: '#',
-            github: '#',
+            github: 'https://github.com/hieeru-jul04/store-management',
             color: '#5B6FFF',
         },
         {
