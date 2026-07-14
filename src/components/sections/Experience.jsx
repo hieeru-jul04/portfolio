@@ -1,77 +1,89 @@
-import { GraduationCap, Briefcase, Code2 } from 'lucide-react'
-import './experience.css'
+import { GraduationCap, Briefcase, Code2, TrendingUp } from 'lucide-react'
 
 const Experience = () => {
     const items = [
         {
-            id: 1,
-            period: '2022 - 2026',
+            period: '2022 — 2026',
             title: 'Hanoi University',
-            subtitle: 'Major in Information Technology',
+            sub: 'Bachelor of Information Technology',
+            desc: 'Studying software engineering, database management, and system analysis.',
             icon: GraduationCap,
-            color: '#5B6FFF',
         },
         {
-            id: 2,
-            period: '2024 - 2026',
-            title: 'Furniture Sales',
-            subtitle: 'Part-time sales assistant at a local furniture store',
+            period: '2024 — 2026',
+            title: 'Furniture Sales Assistant',
+            sub: 'Local Furniture Retailer',
+            desc: 'Customer relations, sales processes, and inventory management.',
             icon: Briefcase,
-            color: '#39D98A',
         },
         {
-            id: 3,
             period: 'Spring 2026',
-            title: 'Internship at Eras Vietnam',
-            subtitle: 'Business Analyst Intern',
-            icon: Briefcase,
-            color: '#F59E0B',
+            title: 'Business Analyst Intern',
+            sub: 'Eras Vietnam',
+            desc: 'Requirements gathering, stakeholder interviews, process analysis, and BRD creation.',
+            icon: TrendingUp,
+            highlight: true,
         },
         {
-            id: 4,
-            period: '2025 - 2026',
+            period: '2025 — 2026',
             title: 'Personal Projects',
-            subtitle: 'Building and deploying several web applications',
+            sub: 'Self-directed development & analysis',
+            desc: 'Built web applications while applying BA methodologies.',
             icon: Code2,
-            color: '#9B8AFB',
         },
     ]
 
     return (
-        <section id="experience" className="py-16">
-            <h2 className="text-white text-2xl font-bold mb-12">Experience & Education</h2>
+        <section id="experience" style={{ background: 'var(--bg-card-alt)' }}>
+            <div className="page-wrap text-center">
+                <span className="label mx-auto">Journey</span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', margin: '0 0 48px' }}>
+                    Experience & <span style={{ color: 'var(--accent)' }}>Education.</span>
+                </h2>
 
-            {/* Timeline */}
-            <div className="relative">
-                {/* Horizontal line */}
-                <div className="hidden md:block absolute top-6 left-0 right-0 h-0.5 bg-[#1F293A]" />
+                <div style={{ position: 'relative', maxWidth: 640, margin: '0 auto', textAlign: 'left' }}>
+                    {/* Vertical line */}
+                    <div className="timeline-line" style={{
+                        position: 'absolute', left: 20, top: 12, bottom: 12,
+                        width: 2, background: 'var(--border)',
+                    }} />
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    {items.map((item, index) => (
-                        <div key={item.id} className="relative flex flex-row md:flex-col gap-6 md:gap-4">
-                            {/* Timeline dot */}
-                            <div className="flex justify-start md:justify-center">
-                                <div
-                                    className="w-12 h-12 rounded-xl flex items-center justify-center z-10 border-2 border-[#1F293A] timeline-icon shrink-0"
-                                    style={{ background: `${item.color}20`, borderColor: item.color }}
-                                >
-                                    <item.icon size={20} color={item.color} />
+                    <div className="flex flex-col gap-8">
+                        {items.map((item, i) => (
+                            <div key={i} className="fade-up" style={{ display: 'flex', gap: 'clamp(12px, 3vw, 24px)', position: 'relative', animationDelay: `${i * 0.1}s` }}>
+                                {/* Icon Node */}
+                                <div style={{
+                                    width: 'clamp(40px, 8vw, 50px)', height: 'clamp(40px, 8vw, 50px)', borderRadius: '50%', flexShrink: 0,
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    background: item.highlight ? 'var(--accent)' : 'var(--bg-card)',
+                                    color: item.highlight ? '#fff' : 'var(--text-muted)',
+                                    border: item.highlight ? 'none' : '1px solid var(--border)',
+                                    boxShadow: item.highlight ? '0 4px 12px var(--accent-soft)' : 'none',
+                                    zIndex: 2,
+                                }}>
+                                    <item.icon size={18} />
+                                </div>
+
+                                {/* Content */}
+                                <div style={{ paddingTop: 4 }}>
+                                    <span style={{ fontSize: 13, color: 'var(--text-muted)', fontWeight: 500 }}>{item.period}</span>
+                                    <h3 style={{
+                                        fontSize: 18, margin: '4px 0 2px',
+                                        fontFamily: 'var(--font-serif)', fontWeight: 600,
+                                        color: item.highlight ? 'var(--accent)' : 'var(--text-heading)',
+                                    }}>
+                                        {item.title}
+                                    </h3>
+                                    <span style={{ fontSize: 14, color: 'var(--text-heading)', display: 'block', marginBottom: 8, fontWeight: 500 }}>
+                                        {item.sub}
+                                    </span>
+                                    <p style={{ fontSize: 15, color: 'var(--text-body)', margin: 0, lineHeight: 1.7 }}>
+                                        {item.desc}
+                                    </p>
                                 </div>
                             </div>
-
-                            {/* Content */}
-                            <div className="flex flex-col gap-1.5 md:text-center mt-1 md:mt-0">
-                                <span className="text-[#9CA3AF] text-xs">{item.period}</span>
-                                <h3 className="text-white font-semibold text-sm leading-snug">{item.title}</h3>
-                                <p className="text-[#6B7280] text-xs leading-relaxed">{item.subtitle}</p>
-                            </div>
-
-                            {/* Connector line on mobile */}
-                            {index < items.length - 1 && (
-                                <div className="md:hidden absolute left-6 top-12 bottom-[-2rem] w-0.5 bg-[#1F293A] -translate-x-0.5" />
-                            )}
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,9 +1,0 @@
-/* Experience timeline */
-.timeline-icon {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-icon:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(91, 111, 255, 0.3);
-}

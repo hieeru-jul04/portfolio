@@ -1,121 +1,123 @@
-import { ExternalLink, Grid2X2 } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
-import ecommerceImg from '../../assets/hero.png'
 import daidongImg from '../../assets/daidong.png'
 import portfolioImg from '../../assets/portfolio.png'
 import storeManagementImg from '../../assets/store-management.png'
+
+const techColors = {
+    'React':          { bg: 'rgba(97, 218, 251, 0.15)',  color: '#61DAFB' },
+    'Node.js':        { bg: 'rgba(104, 159, 56, 0.15)',  color: '#689F38' },
+    'MongoDB':        { bg: 'rgba(77, 163, 77, 0.15)',   color: '#4DA34D' },
+    'Stripe':         { bg: 'rgba(99, 91, 255, 0.15)',   color: '#635BFF' },
+    'Spring Boot':    { bg: 'rgba(109, 179, 63, 0.15)',  color: '#6DB33F' },
+    'MySQL':          { bg: 'rgba(0, 117, 143, 0.15)',   color: '#00758F' },
+    'RBAC':           { bg: 'rgba(239, 108, 0, 0.15)',   color: '#EF6C00' },
+    'Vite':           { bg: 'rgba(189, 52, 254, 0.15)',  color: '#BD34FE' },
+    'CSS Variables':  { bg: 'rgba(38, 77, 228, 0.15)',   color: '#264DE4' },
+}
 
 const Projects = () => {
     const projects = [
         {
             id: 1,
-            title: 'Dai Dong Furniture Website',
-            description: 'Fullstack e-commerce website with authentication, product management and Stripe.',
+            title: 'Dai Dong Furniture',
+            desc: 'Full-stack e-commerce architecture designed with a focus on scalable product management and secure payment processing.',
             image: daidongImg,
-            tags: ['React', 'Node', 'MongoDB'],
-            liveDemo: 'https://daidong-furniture.vercel.app',
+            tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+            live: 'https://daidong-furniture.vercel.app',
             github: 'https://github.com/hieeru-jul04/daidong-furniture',
-            color: '#F59E0B',
         },
         {
             id: 2,
             title: 'Store Management System',
-            description: 'Store management system with authentication and real-time updates.',
+            desc: 'Enterprise-grade inventory tracking system featuring real-time data synchronization and complex role-based access control.',
             image: storeManagementImg,
-            tags: ['React', 'Spring Boot', 'MySQL'],
-            liveDemo: '#',
+            tags: ['React', 'Spring Boot', 'MySQL', 'RBAC'],
+            live: '#',
             github: 'https://github.com/hieeru-jul04/store-management',
-            color: '#5B6FFF',
         },
         {
             id: 3,
             title: 'Personal Portfolio',
-            description: 'My personal portfolio website built with React and Tailwind CSS.',
+            desc: 'A performant static site architected to showcase professional profile data with responsive UI components.',
             image: portfolioImg,
-            tags: ['React', 'Tailwind CSS'],
-            liveDemo: 'https://portfolio-ngoc-hieu-dev.vercel.app',
+            tags: ['React', 'Vite', 'CSS Variables'],
+            live: 'https://portfolio-ngoc-hieu-dev.vercel.app',
             github: 'https://github.com/hieeru-jul04/portfolio',
-            color: '#39D98A',
         },
     ]
 
-    const tagColors = {
-    React: 'bg-blue-500/10 text-blue-400 border border-blue-500/20',
-    'Spring Boot': 'bg-green-500/10 text-green-400 border border-green-500/20',
-    MySQL: 'bg-sky-500/10 text-sky-400 border border-sky-500/20',
-    WebSocket: 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
-    'Tailwind CSS': 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20',
-    MongoDB: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
-    Node: 'bg-lime-500/10 text-lime-400 border border-lime-500/20',
-}
-
     return (
-        <section id="projects" className="py-16">
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-white text-2xl font-bold">My Projects</h2>
-                <button className="hidden items-center gap-2 text-[#5B6FFF] border border-[#1F293A] px-4 py-2 rounded-lg hover:bg-[#0C1423] transition-colors duration-300 cursor-pointer text-sm">
-                    View All Projects <Grid2X2 size={16} />
-                </button>
-            </div>
+        <section id="projects">
+            <div className="page-wrap text-center">
+                <span className="label mx-auto">Development</span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', margin: '0 0 16px' }}>
+                    Technical <span style={{ color: 'var(--accent)' }}>Projects.</span>
+                </h2>
+                <p style={{ maxWidth: 500, margin: '0 auto 48px', color: 'var(--text-body)', fontSize: 16 }}>
+                    Systems designed and deployed from the ground up, highlighting my technical capability.
+                </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project) => (
-                    <div
-                        key={project.id}
-                        className="bg-[#0C1423] border border-[#1F293A] rounded-2xl overflow-hidden hover:border-[#5B6FFF] transition-all duration-300 hover:-translate-y-2 group"
-                    >
-                        {/* Project Image */}
-                        <div className="relative overflow-hidden h-44">
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0C1423] to-transparent opacity-60" />
-                        </div>
-
-                        {/* Project Content */}
-                        <div className="p-5 flex flex-col gap-3">
-                            <h3 className="text-[#5B6FFF] font-semibold text-base">{project.title}</h3>
-                            <p className="text-[#9CA3AF] text-sm leading-relaxed">{project.description}</p>
-
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-2">
-                                {project.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className={`text-xs px-3 py-1 rounded-md font-medium ${tagColors[tag] || 'bg-[#1F293A] text-[#9CA3AF]'}`}
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    {projects.map((p, i) => (
+                        <div key={p.id} className="soft-card fade-up" style={{ animationDelay: `${i * 0.1}s`, display: 'flex', flexDirection: 'column' }}>
+                            <div style={{
+                                height: 200, background: 'var(--bg-muted)',
+                                overflow: 'hidden', borderBottom: '1px solid var(--border)'
+                            }}>
+                                <img src={p.image} alt={p.title}
+                                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                                     onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
+                                     onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
                             </div>
-
-                            {/* Links */}
-                            <div className="flex items-center gap-4 pt-1">
-                                <a
-                                    href={project.liveDemo}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 text-[#9CA3AF] hover:text-white text-sm transition-colors duration-300"
-                                >
-                                    <ExternalLink size={14} /> Live Demo
-                                </a>
-                                <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 text-[#9CA3AF] hover:text-white text-sm transition-colors duration-300"
-                                >
-                                    <FaGithub size={14} /> GitHub
-                                </a>
+                            
+                            <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                <h3 style={{ fontSize: 18, margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>
+                                    {p.title}
+                                </h3>
+                                <p style={{ fontSize: 14, color: 'var(--text-body)', margin: '0 0 20px', lineHeight: 1.6, flex: 1 }}>
+                                    {p.desc}
+                                </p>
+                                
+                                <div className="flex flex-wrap gap-2" style={{ marginBottom: 24 }}>
+                                    {p.tags.map(t => {
+                                        const tc = techColors[t]
+                                        return (
+                                            <span key={t} style={{
+                                                display: 'inline-flex', alignItems: 'center',
+                                                fontSize: 13, fontWeight: 600, padding: '4px 12px',
+                                                borderRadius: 20,
+                                                background: tc ? tc.bg : 'var(--accent-soft)',
+                                                color: tc ? tc.color : 'var(--accent)',
+                                                border: `1px solid ${tc ? tc.color + '30' : 'var(--border-light)'}`,
+                                                transition: 'all 0.2s ease',
+                                            }}>{t}</span>
+                                        )
+                                    })}
+                                </div>
+                                
+                                <div className="flex gap-4">
+                                    <a href={p.live} target="_blank" rel="noopener noreferrer"
+                                       className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
+                                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
+                                        <ExternalLink size={16} /> Live Demo
+                                    </a>
+                                    <a href={p.github} target="_blank" rel="noopener noreferrer"
+                                       className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
+                                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
+                                        <FaGithub size={16} /> Code
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </section>
     )
 }
 
 export default Projects
+

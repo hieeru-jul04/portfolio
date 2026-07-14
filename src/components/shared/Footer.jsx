@@ -1,7 +1,6 @@
 import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
 import { ArrowUp } from 'lucide-react'
-import Logo from '../ui/Logo'
 
 const Footer = () => {
     const socials = [
@@ -16,28 +15,51 @@ const Footer = () => {
     }
 
     return (
-        <footer className="border-t border-[#1F293A] mt-4">
-            <div className="px-4 sm:px-8 md:px-16 py-6 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-                <Logo />
-                <p className="text-[#4B5563] text-sm text-center md:text-left">© 2026 Nguyen Ngoc Hieu. All rights reserved.</p>
-                <div className="flex items-center gap-4">
-                    {socials.map((social) => (
-                        <a
-                            key={social.label}
-                            href={social.href}
-                            aria-label={social.label}
-                            target="_blank"
-                            className="text-[#4B5563] hover:text-[#5B6FFF] transition-colors duration-300 text-lg"
+        <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--bg-page)', paddingBottom: '80px' }}>
+            <div className="page-wrap py-12">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <p style={{ fontSize: 14, color: 'var(--text-muted)', margin: 0 }}>
+                        © {new Date().getFullYear()} Nguyen Ngoc Hieu.
+                    </p>
+
+                    {/* Social links */}
+                    <div className="flex items-center gap-4">
+                        {socials.map((social) => (
+                            <a
+                                key={social.label}
+                                href={social.href}
+                                aria-label={social.label}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center text-lg no-underline"
+                                style={{ color: 'var(--text-muted)', transition: 'color 0.2s ease' }}
+                                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-heading)'}
+                                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+                            >
+                                <social.icon />
+                            </a>
+                        ))}
+
+                        <div style={{ width: 1, height: 20, background: 'var(--border)', margin: '0 8px' }} />
+
+                        <button
+                            onClick={scrollToTop}
+                            className="flex items-center gap-2"
+                            style={{
+                                background: 'transparent',
+                                color: 'var(--text-muted)',
+                                border: 'none',
+                                cursor: 'pointer',
+                                fontSize: 13,
+                                fontWeight: 500,
+                                transition: 'color 0.2s ease',
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-heading)'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
                         >
-                            <social.icon />
-                        </a>
-                    ))}
-                    <button
-                        onClick={scrollToTop}
-                        className="ml-2 w-9 h-9 rounded-xl bg-[#0C1423] border border-[#1F293A] flex items-center justify-center text-[#9CA3AF] hover:text-[#5B6FFF] hover:border-[#5B6FFF] transition-all duration-300 cursor-pointer"
-                    >
-                        <ArrowUp size={16} />
-                    </button>
+                            Back to top <ArrowUp size={14} />
+                        </button>
+                    </div>
                 </div>
             </div>
         </footer>

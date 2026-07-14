@@ -1,8 +1,16 @@
 const Logo = () => {
     return (
-        <div className="font-bold text-4xl">
-            <span className="text-white">N<span className="text-[#5B6FFF]">H.</span></span>
-        </div>
+        <a href="#hero" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+            <span style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 22,
+                fontWeight: 700,
+                color: 'var(--text-heading)',
+                letterSpacing: '-0.02em',
+            }}>
+                Hieu.
+            </span>
+        </a>
     )
 }
 

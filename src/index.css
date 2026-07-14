@@ -1,11 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Outfit', system-ui, sans-serif;
+
+  /* Light Ocean Blue Theme (Default) - Fresh and balanced */
+  --bg-page: #E0F2FE; /* Xanh nhạt - nền chính */
+  --bg-card: #FFFFFF; /* Nền card trắng để nổi bật */
+  --bg-card-alt: #F0F9FF; /* Rất nhạt, xanh biển trong trẻo cho các khối nhấn */
+  --bg-muted: #BAE6FD; /* Xanh rõ hơn cho tag/muted */
+
+  --text-heading: #0F172A; /* Slate 900 - Đen xanh biển sâu */
+  --text-body: #334155; /* Slate 700 */
+  --text-muted: #64748B; /* Slate 500 */
+
+  --accent: #0284C7; /* Sky 600 - Xanh biển mặn mà */
+  --accent-hover: #0369A1; /* Sky 700 */
+  --accent-soft: rgba(2, 132, 199, 0.1);
+  
+  --border: #7DD3FC; /* Sky 300 - Viền xanh rõ ràng, không bị mờ */
+  --border-light: #BAE6FD; /* Sky 200 - Viền nhạt hơn chút xíu */
+
+  --shadow-card: 0 4px 20px rgba(2, 132, 199, 0.05);
+  --shadow-hover: 0 10px 30px rgba(2, 132, 199, 0.12);
+
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
 }
+
+[data-theme="dark"] {
+  /* Dark Ocean Theme - Deep navy */
+  --bg-page: #0B1120; /* Tối hơn Slate 900 - nền chính */
+  --bg-card: #1E293B; /* Slate 800 */
+  --bg-card-alt: #0F172A; /* Slate 900 cho các khối nhấn */
+  --bg-muted: #334155; /* Slate 700 */
+
+  --text-heading: #F8FAFC; /* Slate 50 */
+  --text-body: #CBD5E1; /* Slate 300 */
+  --text-muted: #94A3B8; /* Slate 400 */
+
+  --accent: #38BDF8; /* Sky 400 */
+  --accent-hover: #7DD3FC; /* Sky 300 */
+  --accent-soft: rgba(56, 189, 248, 0.15);
+
+  --border: #475569; /* Slate 600 - Viền rõ nét cho dark mode */
+  --border-light: #334155; /* Slate 700 */
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-heading);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-page); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }

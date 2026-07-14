@@ -1,31 +1,96 @@
-import { SiMysql, SiTailwindcss, SiNodedotjs } from 'react-icons/si'
-import { FaReact, FaJava, FaGithub } from 'react-icons/fa'
-import './skills.css'
+import {
+    FileText, Users, GitBranch, BarChart3, Target, Search,
+    Database, PieChart, Table2, FileSpreadsheet,
+    PenTool, LayoutGrid, MessageSquare, Lightbulb, Presentation, Handshake
+} from 'lucide-react'
+import { SiJira, SiConfluence } from 'react-icons/si'
 
 const Skills = () => {
-    const skills = [
-        { name: 'React.js', icon: FaReact, level: 90, color: '#61DAFB' },
-        { name: 'Node.js', icon: SiNodedotjs, level: 85, color: '#6DB33F' },
-        { name: 'MySQL', icon: SiMysql, level: 80, color: '#4479A1' },
-        { name: 'Java', icon: FaJava, level: 85, color: '#F89820' },
-        { name: 'Tailwind CSS', icon: SiTailwindcss, level: 90, color: '#38BDF8' },
-        { name: 'Git & GitHub', icon: FaGithub, level: 85, color: '#F0F0F0' },
+    const categories = [
+        {
+            title: 'Business Analysis',
+            items: [
+                { name: 'Requirements Gathering', icon: FileText },
+                { name: 'BPMN Modeling', icon: GitBranch },
+                { name: 'Use Case Analysis', icon: Target },
+                { name: 'User Stories', icon: FileText },
+                { name: 'Stakeholder Mgmt', icon: Users },
+                { name: 'Gap Analysis', icon: Search },
+            ],
+        },
+        {
+            title: 'Data & Technical',
+            items: [
+                { name: 'SQL', icon: Database },
+                { name: 'Data Analysis', icon: BarChart3 },
+                { name: 'Advanced Excel', icon: FileSpreadsheet },
+                { name: 'Power BI', icon: PieChart },
+                { name: 'Python (Basic)', icon: Table2 },
+                { name: 'Data Visualization', icon: BarChart3 },
+            ],
+        },
+        {
+            title: 'Tools',
+            items: [
+                { name: 'Jira', icon: SiJira },
+                { name: 'Confluence', icon: SiConfluence },
+                { name: 'Figma', icon: PenTool },
+                { name: 'Draw.io', icon: LayoutGrid },
+                { name: 'MS Office Suite', icon: FileSpreadsheet },
+                { name: 'Notion', icon: LayoutGrid },
+            ],
+        },
+        {
+            title: 'Soft Skills',
+            items: [
+                { name: 'Communication', icon: MessageSquare },
+                { name: 'Critical Thinking', icon: Lightbulb },
+                { name: 'Problem Solving', icon: Target },
+                { name: 'Presentation', icon: Presentation },
+                { name: 'Collaboration', icon: Handshake },
+                { name: 'Analytical Mindset', icon: Search },
+            ],
+        },
     ]
 
     return (
-        <section id="skills" className="py-16">
-            <h2 className="text-white text-2xl font-bold mb-8">My Skills</h2>
+        <section id="skills">
+            <div className="page-wrap text-center">
+                <span className="label mx-auto">Expertise</span>
+                <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', margin: '0 0 16px' }}>
+                    Skills & <span style={{ color: 'var(--accent)' }}>Competencies.</span>
+                </h2>
+                <p style={{ maxWidth: 500, margin: '0 auto 48px', color: 'var(--text-body)', fontSize: 16 }}>
+                    A blend of business acumen, technical know-how, and people skills.
+                </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                {skills.map((skill) => (
-                    <div
-                        key={skill.name}
-                        className="skill-card bg-[#0C1423] border border-[#1F293A] rounded-xl p-5 flex flex-col items-center gap-3 cursor-default hover:border-[#5B6FFF] transition-all duration-300 hover:-translate-y-1"
-                    >
-                        <skill.icon size={36} color={skill.color} />
-                        <span className="text-white text-sm font-medium text-center">{skill.name}</span>
-                    </div>
-                ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    {categories.map((cat, idx) => (
+                        <div key={cat.title} className="soft-card-static fade-up" style={{ padding: 'clamp(16px, 4vw, 32px)', animationDelay: `${idx * 0.1}s` }}>
+                            <h3 style={{
+                                fontSize: 18, fontFamily: 'var(--font-serif)', fontWeight: 600,
+                                color: 'var(--text-heading)', margin: '0 0 20px',
+                            }}>
+                                {cat.title}
+                            </h3>
+                            <div className="grid grid-cols-2 gap-y-4 gap-x-2">
+                                {cat.items.map(item => (
+                                    <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                        <div style={{ 
+                                            width: 32, height: 32, borderRadius: 8, 
+                                            background: 'var(--accent-soft)', color: 'var(--accent)',
+                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            flexShrink: 0,
+                                        }}>
+                                            <item.icon size={16} />
+                                        </div>
+                                        <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-body)' }}>{item.name}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     )

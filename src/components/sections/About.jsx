@@ -1,51 +1,63 @@
-import { Calendar, MapPin, GraduationCap, User } from 'lucide-react'
-import aboutImg from '../../assets/hero-1.png'
+import aboutImg from '../../assets/hanu-logo.png'
+import { MapPin, GraduationCap, Briefcase } from 'lucide-react'
 
 const About = () => {
-    const stats = [
-        { icon: Calendar, label: 'Age', value: '22' },
-        { icon: MapPin, label: 'From', value: 'Vietnam' },
-        { icon: GraduationCap, label: 'Study', value: 'Hanoi University' },
-    ]
-
     return (
-        <section id="about" className="py-16">
-            <div className="flex items-center gap-3 mb-8">
-                <User className="text-[#5B6FFF]" size={24} />
-                <h2 className="text-white text-2xl font-bold">About Me</h2>
-            </div>
-
-            <div className="bg-[#0C1423] border border-[#1F293A] rounded-2xl p-6 md:p-8">
-                <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center md:items-start">
-                    {/* Image */}
+        <section id="about" style={{ background: 'var(--bg-card-alt)' }}>
+            <div className="page-wrap">
+                <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
+                    {/* Left — photo */}
                     <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
-                        <img
-                            src={aboutImg}
-                            alt="About Nguyen Ngoc Hieu"
-                            className="w-full max-w-[250px] md:w-56 h-auto md:h-44 object-cover rounded-xl"
-                        />
+                        <div className="squircle" style={{
+                            width: 'min(280px, 70vw)', height: 'min(280px, 70vw)',
+                            background: 'var(--bg-card)', padding: 6,
+                            boxShadow: 'var(--shadow-card)'
+                        }}>
+                            <div className="squircle" style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+                                <img src={aboutImg} alt="Nguyen Ngoc Hieu"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="flex flex-col gap-6 flex-1 w-full text-center md:text-left">
-                        <p className="text-[#9CA3AF] text-base md:text-lg leading-relaxed">
-                            I'm an Information Technology student with a strong interest in Backend and Fullstack Development.
-                            <br className="hidden md:block" />
-                            My goal is to become a professional Backend or Fullstack Developer, focusing on clean, scalable, and maintainable web solutions.
+                    {/* Right — text */}
+                    <div className="flex-1 text-center md:text-left">
+                        <span className="label">About Me</span>
+                        <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', margin: '0 0 24px' }}>
+                            Turning business complexity into <span style={{ color: 'var(--accent)' }}>clarity.</span>
+                        </h2>
+
+                        <p style={{ marginBottom: 20, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)' }}>
+                            I'm an Information Technology student at Hanoi University with a strong passion for Business Analysis.
+                            My background in fullstack development gives me a unique lens — I understand both what the business wants
+                            and what technology can deliver.
+                        </p>
+                        <p style={{ marginBottom: 32, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)' }}>
+                            During my internship at Eras Vietnam, I practiced requirements gathering, process mapping, and stakeholder interviews.
+                            These experiences confirmed that Business Analysis is the career I want to build.
                         </p>
 
-                        {/* Stats */}
-                        <div className="flex flex-col sm:flex-row gap-4 w-full">
-                            {stats.map((stat) => (
-                                <div
-                                    key={stat.label}
-                                    className="flex-1 bg-[#0A1020] border border-[#1F293A] rounded-xl p-4 flex flex-col items-center md:items-start gap-2"
-                                >
-                                    <div className="flex items-center gap-2 text-[#5B6FFF]">
-                                        <stat.icon size={16} />
-                                        <span className="text-[#9CA3AF] text-sm">{stat.label}</span>
+                        {/* Quick facts */}
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            {[
+                                { label: 'Location', value: 'Hanoi, Vietnam', icon: MapPin },
+                                { label: 'Education', value: 'Hanoi University (IT)', icon: GraduationCap },
+                                { label: 'Focus', value: 'Business Analysis', icon: Briefcase },
+                            ].map(f => (
+                                <div key={f.label} className="soft-card-static flex items-center gap-3" style={{
+                                    padding: '12px 16px', flex: 1
+                                }}>
+                                    <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--accent-soft)', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <f.icon size={16} />
                                     </div>
-                                    <span className="text-white font-semibold text-sm">{stat.value}</span>
+                                    <div className="text-left">
+                                        <span style={{ fontSize: 11, color: 'var(--text-muted)', display: 'block', marginBottom: 2 }}>
+                                            {f.label}
+                                        </span>
+                                        <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-heading)' }}>
+                                            {f.value}
+                                        </span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
