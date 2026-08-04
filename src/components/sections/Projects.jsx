@@ -5,15 +5,15 @@ import portfolioImg from '../../assets/portfolio.png'
 import storeManagementImg from '../../assets/store-management.png'
 
 const techColors = {
-    'React':          { bg: 'rgba(97, 218, 251, 0.15)',  color: '#61DAFB' },
-    'Node.js':        { bg: 'rgba(104, 159, 56, 0.15)',  color: '#689F38' },
-    'MongoDB':        { bg: 'rgba(77, 163, 77, 0.15)',   color: '#4DA34D' },
-    'Stripe':         { bg: 'rgba(99, 91, 255, 0.15)',   color: '#635BFF' },
-    'Spring Boot':    { bg: 'rgba(109, 179, 63, 0.15)',  color: '#6DB33F' },
-    'MySQL':          { bg: 'rgba(0, 117, 143, 0.15)',   color: '#00758F' },
-    'RBAC':           { bg: 'rgba(239, 108, 0, 0.15)',   color: '#EF6C00' },
-    'Vite':           { bg: 'rgba(189, 52, 254, 0.15)',  color: '#BD34FE' },
-    'CSS Variables':  { bg: 'rgba(38, 77, 228, 0.15)',   color: '#264DE4' },
+    'React': { bg: 'rgba(97, 218, 251, 0.15)', color: '#61DAFB' },
+    'Node.js': { bg: 'rgba(104, 159, 56, 0.15)', color: '#689F38' },
+    'MongoDB': { bg: 'rgba(77, 163, 77, 0.15)', color: '#4DA34D' },
+    'Stripe': { bg: 'rgba(99, 91, 255, 0.15)', color: '#635BFF' },
+    'Spring Boot': { bg: 'rgba(109, 179, 63, 0.15)', color: '#6DB33F' },
+    'MySQL': { bg: 'rgba(0, 117, 143, 0.15)', color: '#00758F' },
+    'RBAC': { bg: 'rgba(239, 108, 0, 0.15)', color: '#EF6C00' },
+    'Vite': { bg: 'rgba(189, 52, 254, 0.15)', color: '#BD34FE' },
+    'CSS Variables': { bg: 'rgba(38, 77, 228, 0.15)', color: '#264DE4' },
 }
 
 const Projects = () => {
@@ -38,24 +38,24 @@ const Projects = () => {
         },
         {
             id: 3,
-            title: 'Personal Portfolio',
+            title: 'Portfolio',
             desc: 'A performant static site architected to showcase professional profile data with responsive UI components.',
             image: portfolioImg,
             tags: ['React', 'Vite', 'CSS Variables'],
-            live: 'https://portfolio-ngoc-hieu-dev.vercel.app',
+            live: 'https://portfolio-hieeru-jul04.vercel.app',
             github: 'https://github.com/hieeru-jul04/portfolio',
         },
     ]
 
     return (
-        <section id="projects">
+        <section id="projects" style={{ background: 'var(--bg-card-alt)' }}>
             <div className="page-wrap text-center">
                 <span className="label mx-auto">Development</span>
                 <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', margin: '0 0 16px' }}>
-                    Technical <span style={{ color: 'var(--accent)' }}>Projects.</span>
+                    Personal <span style={{ color: 'var(--accent)' }}>Technical Projects.</span>
                 </h2>
                 <p style={{ maxWidth: 500, margin: '0 auto 48px', color: 'var(--text-body)', fontSize: 16 }}>
-                    Systems designed and deployed from the ground up, highlighting my technical capability.
+                    Systems designed and deployed from the ground up, highlighting my portfolio.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -66,11 +66,11 @@ const Projects = () => {
                                 overflow: 'hidden', borderBottom: '1px solid var(--border)'
                             }}>
                                 <img src={p.image} alt={p.title}
-                                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                                     onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
-                                     onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                                    onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
+                                    onMouseLeave={e => e.target.style.transform = 'scale(1)'} />
                             </div>
-                            
+
                             <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
                                 <h3 style={{ fontSize: 18, margin: '0 0 8px', fontFamily: 'var(--font-serif)', fontWeight: 600 }}>
                                     {p.title}
@@ -78,7 +78,7 @@ const Projects = () => {
                                 <p style={{ fontSize: 14, color: 'var(--text-body)', margin: '0 0 20px', lineHeight: 1.6, flex: 1 }}>
                                     {p.desc}
                                 </p>
-                                
+
                                 <div className="flex flex-wrap gap-2" style={{ marginBottom: 24 }}>
                                     {p.tags.map(t => {
                                         const tc = techColors[t]
@@ -95,18 +95,18 @@ const Projects = () => {
                                         )
                                     })}
                                 </div>
-                                
+
                                 <div className="flex gap-4">
                                     <a href={p.live} target="_blank" rel="noopener noreferrer"
-                                       className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
-                                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
+                                        className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
                                         <ExternalLink size={16} /> Live Demo
                                     </a>
                                     <a href={p.github} target="_blank" rel="noopener noreferrer"
-                                       className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
-                                       onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                                       onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
+                                        className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-heading)', transition: 'color 0.2s' }}
+                                        onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
+                                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-heading)'}>
                                         <FaGithub size={16} /> Code
                                     </a>
                                 </div>

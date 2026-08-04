@@ -27,14 +27,14 @@ const About = () => {
                             Turning business complexity into <span style={{ color: 'var(--accent)' }}>clarity.</span>
                         </h2>
 
-                        <p style={{ marginBottom: 20, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)' }}>
-                            I'm an Information Technology student at Hanoi University with a strong passion for Business Analysis.
-                            My background in fullstack development gives me a unique lens — I understand both what the business wants
+                        <p style={{ marginBottom: 20, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)', textAlign: "justify" }}>
+                            I'm an Information Technology student at Hanoi University with a background in software development.
+                            I have a solid understanding of how systems work and how business requirements are translated into technical solutions.
                             and what technology can deliver.
                         </p>
-                        <p style={{ marginBottom: 32, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)' }}>
-                            During my internship at Eras Vietnam, I practiced requirements gathering, process mapping, and stakeholder interviews.
-                            These experiences confirmed that Business Analysis is the career I want to build.
+                        <p style={{ marginBottom: 32, fontSize: 16, lineHeight: 1.8, color: 'var(--text-body)', textAlign: "justify" }}>
+                            I’m currently focusing on developing my skills in requirement analysis, problem-solving, and understanding user needs.
+                            I aim to grow as a Business Analyst by learning how to bridge the gap between business and technology and contribute to building meaningful, user-centered products.
                         </p>
 
                         {/* Quick facts */}

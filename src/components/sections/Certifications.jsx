@@ -4,11 +4,11 @@ const Certifications = () => {
     const certifications = [
         {
             id: 1,
-            name: 'Google Data Analytics Professional Certificate',
-            issuer: 'Google — Coursera',
-            description: 'Comprehensive data analytics program covering spreadsheets, SQL, R programming, Tableau, and data visualization.',
-            status: 'planned',
-            link: 'https://www.coursera.org/professional-certificates/google-data-analytics',
+            name: 'Certificate of Proficiency in English',
+            issuer: 'Hanoi University — B2 level',
+            description: 'Good English communication skills in both written and spoken contexts, able to understand and express ideas effectively in academic and professional settings.',
+            status: 'completed',
+            link: '#',
         },
         {
             id: 2,
@@ -98,10 +98,10 @@ const Certifications = () => {
                                 </p>
 
                                 <a href={cert.link} target="_blank" rel="noopener noreferrer"
-                                   className="flex items-center gap-2 no-underline"
-                                   style={{ fontSize: 13, fontWeight: 500, color: 'var(--accent)', transition: 'opacity 0.2s' }}
-                                   onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
-                                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
+                                    className="flex items-center gap-2 no-underline"
+                                    style={{ fontSize: 13, fontWeight: 500, color: 'var(--accent)', transition: 'opacity 0.2s' }}
+                                    onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
+                                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}>
                                     Verify <ExternalLink size={14} />
                                 </a>
                             </div>

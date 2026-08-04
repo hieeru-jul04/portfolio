@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { Mail, Phone, MapPin, Send, CheckCircle, X, AlertCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
-    const [form, setForm] = useState({ name: '', email: '', message: '' })
+    const formRef = useRef()
+    const [form, setForm] = useState({ title: '', email: '', message: '' })
     const [sending, setSending] = useState(false)
     const [sent, setSent] = useState(false)
+    const [notification, setNotification] = useState({ show: false, type: 'success', message: '' })
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -13,12 +16,32 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setSending(true)
-        setTimeout(() => {
-            setSending(false)
-            setSent(true)
-            setForm({ name: '', email: '', message: '' })
-            setTimeout(() => setSent(false), 3000)
-        }, 1500)
+
+        emailjs
+            .sendForm(
+                'service_bflq5c6', // Thay bằng Service ID của bạn từ EmailJS
+                'template_684mfzo', // Thay bằng Template ID của bạn từ EmailJS
+                formRef.current,
+                'R5cyIC_ow_pqOfsxc' // Thay bằng Public Key của bạn từ EmailJS
+            )
+            .then(
+                () => {
+                    setSending(false)
+                    setSent(true)
+                    setForm({ title: '', email: '', message: '' })
+                    setNotification({ show: true, type: 'success', message: 'Message sent successfully!' })
+                    setTimeout(() => {
+                        setSent(false)
+                        setNotification(prev => ({ ...prev, show: false }))
+                    }, 5000)
+                },
+                (error) => {
+                    setSending(false)
+                    console.log('FAILED...', error.text)
+                    setNotification({ show: true, type: 'error', message: 'Failed to send message. Please try again.' })
+                    setTimeout(() => setNotification(prev => ({ ...prev, show: false })), 5000)
+                }
+            )
     }
 
     const contactInfo = [
@@ -45,17 +68,17 @@ const Contact = () => {
                     <div className="lg:w-1/3 flex flex-col gap-6 justify-center">
                         {contactInfo.map((info) => (
                             <a key={info.text} href={info.href} className="flex items-center gap-4 no-underline group"
-                               style={{ transition: 'all 0.3s' }}
-                               onMouseEnter={e => {
-                                   e.currentTarget.querySelector('.icon-box').style.background = 'var(--accent)'
-                                   e.currentTarget.querySelector('.icon-box').style.borderColor = 'var(--accent)'
-                                   e.currentTarget.querySelector('svg').style.color = '#fff'
-                               }}
-                               onMouseLeave={e => {
-                                   e.currentTarget.querySelector('.icon-box').style.background = 'var(--bg-card)'
-                                   e.currentTarget.querySelector('.icon-box').style.borderColor = 'var(--border)'
-                                   e.currentTarget.querySelector('svg').style.color = 'var(--text-muted)'
-                               }}>
+                                style={{ transition: 'all 0.3s' }}
+                                onMouseEnter={e => {
+                                    e.currentTarget.querySelector('.icon-box').style.background = 'var(--accent)'
+                                    e.currentTarget.querySelector('.icon-box').style.borderColor = 'var(--accent)'
+                                    e.currentTarget.querySelector('svg').style.color = '#fff'
+                                }}
+                                onMouseLeave={e => {
+                                    e.currentTarget.querySelector('.icon-box').style.background = 'var(--bg-card)'
+                                    e.currentTarget.querySelector('.icon-box').style.borderColor = 'var(--border)'
+                                    e.currentTarget.querySelector('svg').style.color = 'var(--text-muted)'
+                                }}>
                                 <div className="icon-box" style={{
                                     width: 48, height: 48, flexShrink: 0, borderRadius: '50%',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -76,49 +99,49 @@ const Contact = () => {
 
                     {/* Form */}
                     <div className="lg:w-2/3">
-                        <form onSubmit={handleSubmit} className="soft-card-static" style={{ padding: 'clamp(16px, 4vw, 32px)' }}>
+                        <form ref={formRef} onSubmit={handleSubmit} className="soft-card-static" style={{ padding: 'clamp(16px, 4vw, 32px)' }}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div className="flex flex-col gap-2">
-                                    <label style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-heading)' }}>Name</label>
-                                    <input type="text" name="name" placeholder="John Doe" value={form.name} onChange={handleChange} required
-                                           style={{
-                                               padding: '12px 16px', borderRadius: 8,
-                                               background: 'var(--bg-card)', border: '1px solid var(--border)',
-                                               color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
-                                           }}
-                                           onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                                           onBlur={e => e.target.style.borderColor = 'var(--border)'} />
-                                </div>
                                 <div className="flex flex-col gap-2">
                                     <label style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-heading)' }}>Email</label>
                                     <input type="email" name="email" placeholder="john@example.com" value={form.email} onChange={handleChange} required
-                                           style={{
-                                               padding: '12px 16px', borderRadius: 8,
-                                               background: 'var(--bg-card)', border: '1px solid var(--border)',
-                                               color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
-                                           }}
-                                           onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                                           onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+                                        style={{
+                                            padding: '12px 16px', borderRadius: 8,
+                                            background: 'var(--bg-card)', border: '1px solid var(--border)',
+                                            color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
+                                        }}
+                                        onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                                        onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <label style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-heading)' }}>Title</label>
+                                    <input type="text" name="title" placeholder="Project Title" value={form.title} onChange={handleChange} required
+                                        style={{
+                                            padding: '12px 16px', borderRadius: 8,
+                                            background: 'var(--bg-card)', border: '1px solid var(--border)',
+                                            color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
+                                        }}
+                                        onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                                        onBlur={e => e.target.style.borderColor = 'var(--border)'} />
                                 </div>
                             </div>
-                            
+
                             <div className="flex flex-col gap-2 mb-8">
                                 <label style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-heading)' }}>Message</label>
                                 <textarea name="message" placeholder="How can I help you?" value={form.message} onChange={handleChange} required rows={5}
-                                          style={{
-                                              padding: '16px', borderRadius: 8, resize: 'none',
-                                              background: 'var(--bg-card)', border: '1px solid var(--border)',
-                                              color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
-                                          }}
-                                          onFocus={e => e.target.style.borderColor = 'var(--accent)'}
-                                          onBlur={e => e.target.style.borderColor = 'var(--border)'} />
+                                    style={{
+                                        padding: '16px', borderRadius: 8, resize: 'none',
+                                        background: 'var(--bg-card)', border: '1px solid var(--border)',
+                                        color: 'var(--text-heading)', fontSize: 14, outline: 'none', transition: 'border-color 0.2s'
+                                    }}
+                                    onFocus={e => e.target.style.borderColor = 'var(--accent)'}
+                                    onBlur={e => e.target.style.borderColor = 'var(--border)'} />
                             </div>
 
                             <button type="submit" disabled={sending || sent} className="btn btn-primary"
-                                    style={{
-                                        width: '100%', justifyContent: 'center',
-                                        opacity: (sending || sent) ? 0.7 : 1, cursor: (sending || sent) ? 'not-allowed' : 'pointer',
-                                    }}>
+                                style={{
+                                    width: '100%', justifyContent: 'center',
+                                    opacity: (sending || sent) ? 0.7 : 1, cursor: (sending || sent) ? 'not-allowed' : 'pointer',
+                                }}>
                                 {sent ? 'Message Sent!' : sending ? 'Sending...' : (
                                     <>Send Message <Send size={16} /></>
                                 )}
@@ -126,6 +149,37 @@ const Contact = () => {
                         </form>
                     </div>
                 </div>
+            </div>
+
+            {/* Toast Notification */}
+            <div style={{
+                position: 'fixed', bottom: 24, right: 24,
+                background: 'var(--bg-card)', border: '1px solid var(--border)',
+                padding: '16px 20px', borderRadius: 12,
+                display: 'flex', alignItems: 'center', gap: 12,
+                boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
+                transform: notification.show ? 'translateY(0)' : 'translateY(150%)',
+                opacity: notification.show ? 1 : 0,
+                pointerEvents: notification.show ? 'auto' : 'none',
+                transition: 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                zIndex: 9999
+            }}>
+                {notification.type === 'success' ? (
+                    <CheckCircle size={22} color="#10b981" />
+                ) : (
+                    <AlertCircle size={22} color="#ef4444" />
+                )}
+                <span style={{ fontSize: 15, fontWeight: 500, color: 'var(--text-heading)' }}>
+                    {notification.message}
+                </span>
+                <button onClick={() => setNotification(prev => ({ ...prev, show: false }))} style={{
+                    background: 'none', border: 'none', cursor: 'pointer', padding: 4, marginLeft: 8,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'var(--text-muted)', transition: 'color 0.2s'
+                }} onMouseOver={e => e.currentTarget.style.color = 'var(--text-heading)'}
+                    onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <X size={18} />
+                </button>
             </div>
         </section>
     )

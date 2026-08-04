@@ -76,8 +76,8 @@ const Skills = () => {
                             <div className="grid grid-cols-2 gap-y-4 gap-x-2">
                                 {cat.items.map(item => (
                                     <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                        <div style={{ 
-                                            width: 32, height: 32, borderRadius: 8, 
+                                        <div style={{
+                                            width: 32, height: 32, borderRadius: 8,
                                             background: 'var(--accent-soft)', color: 'var(--accent)',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                                             flexShrink: 0,

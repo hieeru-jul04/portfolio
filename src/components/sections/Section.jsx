@@ -77,10 +77,10 @@ const Section = () => {
 
                         <p className="fade-up d2" style={{
                             maxWidth: 480, margin: '0 0 36px', fontSize: 16,
-                            lineHeight: 1.7, color: 'var(--text-body)',
+                            lineHeight: 1.7, color: 'var(--text-body)', textAlign: 'justify'
                         }}>
-                            I help organizations turn complex business needs into clear, actionable technical solutions.
-                            Passionate about bridging the gap between people, processes, and technology.
+                            I aim to grow as a Business Analyst by learning how to turn business needs into clear, actionable solutions.
+                            Passionate about understanding users and bridging the gap between business and technology.
                         </p>
 
                         <div className="fade-up d3 flex flex-col sm:flex-row gap-4 justify-center md:justify-start" style={{ marginBottom: 36 }}>
